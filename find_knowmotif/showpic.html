@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>show results</title>
+    <style type="text/css">
+        img {
+            transition:transform 0.25s ease;
+        }
+
+        img:hover {
+            -webkit-transform:scale(3);
+            transform:scale(3);
+        }
+    </style>
+</head>
+<body>
+<p>The motif you submitted (top) and the most similar existing motif (bottom)</p>
+<br></br>
+<p style="text-align: center">
+    <img src="motifpic/motifpic.png" alt="you image not found,debug" height="80" width="200">
+</p>
+<br></br>
+<p>Please observe carefully and then decide whether to add the motifs you found to the database</p>
+
+<form action="/motifdb/addmotif2database.php" method="get">
+    <input type="radio" name="q" value="yes" />I will add my new motif to database
+    <br><br>
+    <input type="radio" name="q" value="no" />There is a very similar motif, I will not add
+    <br><br>
+    <input type="radio" name="q" value="forgo" />I want to consult with the teacher before making a decision
+    <br><br>
+    <input type="submit" value="submit">
+</form>
+
+
+
+
+
+</body>
+</html>

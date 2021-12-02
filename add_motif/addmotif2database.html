@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>hbmcsysbio</title>
+</head>
+<body>
+
+<div class="layui-inline">
+  <label class="layui-form-label">你可以在我们motif数据库中添加你的新发现motif</label>
+  <div class="layui-input-inline" style="width: 180px;">
+    <select name="consensus" id="dna_option" lay-filter="dna_option" onchange="showform()">
+      <option value="2">Please choose an option</option>
+      <option value="0">DNA_consensus</option>
+      <option value="1">Matrix</option>
+    </select>
+  </div>
+</div>
+
+
+<div class="form-row" id="DNA_consensus" style="display: none;">
+  <div class="container">
+    <form action="/motifdb/addmotif.php">
+      <div class="row">
+        <div class="col-25">
+          <label for="consensus">just type your consensus in the box: </label>
+
+        </div>
+        <div class="col-75">
+          <input type="text" id="consensus" name="consensus" placeholder="consensus">
+        </div>
+      </div>
+
+      <div class="row">
+        <input type="submit" value="Submit">
+      </div>
+    </form>
+  </div>
+</div>
+<!-- 当选择危险品时，显示： -->
+<div class="form-row" id="Matrix" style="display: none;">
+  <div class="container">
+    <form action="/motifdb/addmotif.php">
+      <div class="row">
+        <div class="col-25">
+          <label for="consensus">just type your Matrix(ACGT) in the box: </label>
+
+        </div>
+        <div class="col-75">
+                <textarea rows="8" cols="80" id="consensus" name="consensus" placeholder="Enter a PFM format...
+                for example(1st row is A,2-4 is CGT):
+                16 2 3 24 45
+                15 2 12 1 33
+                13 4 6 8 99
+                23 56 78 11 1"></textarea>
+        </div>
+      </div>
+
+      <div class="row">
+        <input type="submit" value="Submit">
+      </div>
+    </form>
+  </div>
+</div>
+<script>
+  const select = document.querySelector('#dna_option')
+  const ref = document.querySelector('#DNA_consensus')
+  const danger = document.querySelector('#Matrix')
+  function showform() {
+    if (select.value === '0') {
+      ref.style.display = 'block'
+      danger.style.display = 'none'
+    } else if (select.value === '1') {
+      ref.style.display = 'none'
+      danger.style.display = 'block'
+    } else {
+      ref.style.display = 'none'
+      danger.style.display = 'none'
+    }
+  }
+</script>
+</body>
+</html>
