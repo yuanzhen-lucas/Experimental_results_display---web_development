@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>hbmcsysbio</title>
+    <script src="http://59.79.233.205/sysbiomotif/jquery.min.js"></script>
+    <style>
+        .myDiv{
+            display:none;
+        }
+        #showOne{
+            color:red;
+            border:1px solid red;
+            padding:10px;
+        }
+        #showTwo{
+            color:green;
+            border:1px solid green;
+            padding:10px;
+        }
+        #showThree{
+            color:blue;
+            border:1px solid blue;
+            padding:10px;
+        }
+    </style>
+    <style type="text/css">
+        img {
+            transition:transform 0.25s ease;
+        }
+
+        img:hover {
+            -webkit-transform:scale(3);
+            transform:scale(3);
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            $('input[type="radio"]').click(function(){
+                var demovalue = $(this).val();
+                $("div.myDiv").hide();
+                $("#show"+demovalue).show();
+            });
+        });
+    </script>
+</head>
+<body>
+<h2>The motif you submitted (top) and the most similar existing motif (bottom)</h2>
+<br></br>
+<p style="text-align: center">
+    <img src="motifpic/motifpic.png" alt="you image not found,debug" height="80" width="200">
+</p>
+<br></br>
+<p>Please observe carefully and then decide whether to add the motifs you found to the database</p>
+
+<input type="radio" name="demo" value="One"/> I will add my new motif to database
+<br></br>
+<input type="radio" name="demo" value="Two"/> There is a very similar motif, I will not add
+<br></br>
+<input type="radio" name="demo" value="Three"/> I want to consult with the teacher before making a decision
+<br></br>
+<div id="showOne" class="myDiv">
+    <strong>Enter the relevant information saved to the database</strong>
+    <p>Please enter one word or multiple words connected by underscore</p>
+    <form id="MyForm" action="/sysbiomotif/addmotif2database.php" method="get">
+        <label>Name</label>
+        <input type="text" name="name" placeholder="yuanzhen"/>
+        <br></br>
+        <label>Tissue</label>
+        <input type="text" name="tissue" placeholder="leaf,steam_cell and so on"/>
+        <br></br>
+        <label>batch</label>
+        <input type="text" name="batch" placeholder="yz1_1__ATInucli"/>
+        <br></br>
+        <label for="consensus">just type your Matrix(ACGT) in the box: </label>
+        <br></br>
+        <textarea rows="8" cols="80" id="consensus" name="consensus" placeholder="Enter a PFM format...
+                for example(1st row is A,2-4 is CGT):
+                16 2 3 24 45
+                15 2 12 1 33
+                13 4 6 8 99
+                23 56 78 11 1"></textarea>
+        <br></br>
+        <input type="submit" class="btn btn-default" name="submit" value="Submit"/>
+    </form>
+</div>
+<div id="showTwo" class="myDiv">
+    <strong>keep it up, you can do it</strong>
+    <form id="MyForm" action="" method="post">
+        <p>Thank you for your hard work</p>
+        <p>You can leave and close this page</p>
+    </form>
+</div>
+<div id="showThree" class="myDiv">
+    <strong>You better have your own unique insights</strong>
+    <p>You can leave and close this page</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<title>sysbiohbmc</title>
+<style>
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        width: 200px;
+        background-color: #f1f1f1;
+    }
+
+    li a {
+        display: block;
+        color: #000;
+        padding: 8px 16px;
+        text-decoration: none;
+    }
+
+    li a.active {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    li a:hover:not(.active) {
+        background-color: #555;
+        color: white;
+    }
+</style>
+<body>
+<form>
+<h2>你可以在我们motif数据库中添加你的新发现motif</h2>
+<select name="consensus" id="consensus">
+    <option value="">--Please choose an option--</option>
+    <option value="consensus">DNA consensus</option>
+    <option value="consensus">Matric</option>
+</select>
+</form>
+
+</body>
+</html>
